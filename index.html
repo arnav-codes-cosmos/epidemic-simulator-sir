@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Epidemic Simulator (SIR)</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <h1>Epidemic simulator</h1>
+  <p class="sub">Dots move, meet, infect and recover. Dashed lines show what the SIR equations predict from the same parameters.</p>
+
+  <div class="stage">
+    <canvas id="world" width="640" height="420" aria-label="Population simulation"></canvas>
+    <canvas id="graph" width="640" height="260" aria-label="Outbreak graph"></canvas>
+  </div>
+
+  <div class="legend">
+    <span><i class="s"></i>Susceptible</span>
+    <span><i class="i"></i>Infected</span>
+    <span><i class="r"></i>Recovered</span>
+    <span><i class="dash"></i>SIR equations</span>
+  </div>
+
+  <section class="panel">
+    <label>Infection chance per contact <output id="o-p"></output>
+      <input id="p" type="range" min="5" max="100" value="50"></label>
+    <label>Recovery time <output id="o-t"></output>
+      <input id="t" type="range" min="3" max="30" value="14"></label>
+    <label>Social distancing <output id="o-d"></output>
+      <input id="d" type="range" min="0" max="95" value="0"></label>
+    <label>Population <output id="o-n"></output>
+      <input id="n" type="range" min="100" max="800" step="50" value="400"></label>
+    <div class="btns">
+      <button id="pause">Pause</button>
+      <button id="reset">Restart</button>
+    </div>
+  </section>
+
+  <section class="stats">
+    <div><b id="c-s">0</b><span>susceptible</span></div>
+    <div><b id="c-i">0</b><span>infected</span></div>
+    <div><b id="c-r">0</b><span>recovered</span></div>
+    <div><b id="c-day">0</b><span>day</span></div>
+    <div><b id="c-r0">–</b><span>R₀ (β/γ)</span></div>
+    <div><b id="c-peak">0%</b><span>peak infected</span></div>
+    <div><b id="c-fs">–</b><span>final size, sim</span></div>
+    <div><b id="c-fo">–</b><span>final size, equations</span></div>
+  </section>
+</main>
+<script src="script.js"></script>
+</body>
+</html>
